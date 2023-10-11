@@ -11,7 +11,7 @@ namespace Bee_Management_System
         public const float EGGS_PER_SHIFT = 0.45F;
         public const float HONEY_PER_UNASSIGNED_WORKER = 0.5F; //每一隻蜜蜂在每一個班次吃掉多少蜂蜜
 
-        private Bee[] workers = new Bee[0]; // 最初是空陣列
+        private IWorker[] workers = new IWorker[0]; // 最初是空陣列
         private float eggs = 0; // 紀錄蜂卵
         private float unassignedWorkers = 3; //等待承接工作的工蜂數量
 
@@ -28,7 +28,7 @@ namespace Bee_Management_System
         /// 將工作角色放入陣列
         /// </summary>
         /// <param name="worker"></param>
-        private void AddWorker(Bee worker)
+        private void AddWorker(IWorker worker)
         {
             if(unassignedWorkers >= 1)
             {
@@ -58,7 +58,7 @@ namespace Bee_Management_System
         private string WorkerStatus(string job)
         {
             int count = 0;
-            foreach(Bee worker in workers)
+            foreach(IWorker worker in workers)
             {
                 if (worker.Job == job) count++;
             }
@@ -87,7 +87,7 @@ namespace Bee_Management_System
         protected override void DoJob()
         {
             eggs += EGGS_PER_SHIFT;
-            foreach(Bee worker in workers)
+            foreach(IWorker worker in workers)
             {
                 worker.WorkTheNextShift();
             }

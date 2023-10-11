@@ -21,6 +21,7 @@ namespace Bee_Management_System
     /// </summary>
     public partial class MainWindow : Window
     {
+
         private Queen queen = new Queen();
         private DispatcherTimer timer = new DispatcherTimer();
         public MainWindow()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bee_Management_System
 {
-    abstract class Bee
+    abstract class Bee : IWorker
     {
         /// <summary>
         /// 定義每一班次吃掉的蜂蜜數量
